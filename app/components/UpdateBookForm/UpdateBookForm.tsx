@@ -1,29 +1,38 @@
-import { createBook } from "@/app/actions/bookAction";
+import { getSingleBook, updateBook } from "@/app/actions/bookAction";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Field, FieldGroup } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { FieldGroup } from "@/components/ui/field";
+import { SquarePen } from "lucide-react";
 
-export function CreateBookForm() {
+type UpdateBookFormProps = {
+  singleBookId: string;
+};
+
+export async function UpdateBookForm({ singleBookId }: UpdateBookFormProps) {
+  const book = await getSingleBook(singleBookId);
+
   return (
     <Dialog>
       {/* <form action={createBook} className="p-5 sm:p-7"> */}
       <DialogTrigger
-        className="inline-flex items-center justify-center gap-2 rounded-lg bg-indigo-600 px-6 py-5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 cursor-pointer"
-        render={<Button variant="outline">+ বই যোগ করুন</Button>}
+        render={
+          <Button
+            variant="normalBtn"
+            className="flex h-9 w-9 items-center justify-center rounded-lg text-gray-500 transition hover:bg-amber-50 hover:text-amber-600 cursor-pointer"
+          >
+            <SquarePen />
+          </Button>
+        }
       />
       <DialogContent className="sm:max-w-3xl">
-        <form action={createBook} className="p-5 sm:p-7">
+        <form action={updateBook} className="p-5 sm:p-7">
           <DialogHeader>
             <DialogTitle className="text-2xl font-semibold text-gray-900 mb-4">
               বইয়ের তথ্য
@@ -33,6 +42,8 @@ export function CreateBookForm() {
             <div className="mb-7">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 {/* Book Title */}
+
+                <input type="hidden" name="id" value={book.id} />
                 <div className="sm:col-span-2">
                   <label
                     htmlFor="title"
@@ -46,6 +57,7 @@ export function CreateBookForm() {
                     placeholder="যেমন: মার্কেটিং ম্যাজিক"
                     className="w-full h-11 px-4 rounded-lg border border-gray-300 bg-white text-sm text-gray-900 placeholder:text-gray-400 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
                     name="title"
+                    defaultValue={book.title}
                   />
                 </div>
                 {/* Author */}
@@ -62,6 +74,7 @@ export function CreateBookForm() {
                     placeholder="যেমন: মুহাম্মদ ইলিয়াস কাঞ্চন"
                     className="w-full h-11 px-4 rounded-lg border border-gray-300 bg-white text-sm text-gray-900 placeholder:text-gray-400 outline-none transition focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
                     name="subtitle"
+                    defaultValue={book.subtitle}
                   />
                 </div>
               </div>{" "}
@@ -89,6 +102,7 @@ export function CreateBookForm() {
                       placeholder="1000"
                       className="w-full h-11 pl-8 pr-4 rounded-lg border border-gray-300 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
                       name="mrp"
+                      defaultValue={book.mrp}
                     />
                   </div>
                 </div>
@@ -107,6 +121,7 @@ export function CreateBookForm() {
                       placeholder="20"
                       className="w-full h-11 px-4 pr-10 rounded-lg border border-gray-300 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
                       name="dis"
+                      defaultValue={book.dis}
                     />
                     <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
                       %
@@ -131,6 +146,7 @@ export function CreateBookForm() {
                       placeholder="800"
                       className="w-full h-11 pl-8 pr-4 rounded-lg border border-gray-300 text-sm outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
                       name="prc"
+                      defaultValue={book.prc}
                     />
                   </div>
                 </div>
@@ -156,6 +172,7 @@ export function CreateBookForm() {
                   id="image"
                   type="text"
                   name="image"
+                  defaultValue={book.image}
                 />
               </label>{" "}
             </div>

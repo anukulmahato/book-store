@@ -1,7 +1,17 @@
 import React from "react";
 import { getAllBook } from "../actions/bookAction";
 import Link from "next/link";
-import { CreateBookForm } from "../components/CreateBookForm/page";
+import { CreateBookForm } from "../components/CreateBookForm/CreateBookForm";
+
+type Book = {
+  id: number;
+  title: string;
+  subtitle: string;
+  image: string;
+  mrp: number;
+  dis: number;
+  prc: number;
+};
 
 async function page() {
   const books = await getAllBook();
@@ -32,7 +42,7 @@ async function page() {
           className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4
        xl:grid-cols-5 gap-4 sm:gap-5"
         >
-          {books.reverse().map((item) => {
+          {books.reverse().map((item: Book) => {
             return (
               <div
                 key={item.id}

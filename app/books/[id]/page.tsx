@@ -2,10 +2,26 @@ import { getAllBook } from "@/app/actions/bookAction";
 import Link from "next/link";
 import React from "react";
 
-async function SinglePage({ params }) {
+type Book = {
+  id: string;
+  title: string;
+  subtitle: string;
+  image: string;
+  mrp: number;
+  dis: number;
+  prc: number;
+};
+
+type SinglePageProps = {
+  params: Promise<{
+    id: string;
+  }>;
+};
+
+async function SinglePage({ params }: SinglePageProps) {
   const { id } = await params;
   const books = await getAllBook();
-  const book = books.find((data) => data.id == id);
+  const book = books.find((data: Book) => data.id == id);
 
   return (
     <>

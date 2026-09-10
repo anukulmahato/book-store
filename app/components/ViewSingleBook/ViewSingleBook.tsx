@@ -10,7 +10,11 @@ import {
 } from "@/components/ui/dialog";
 import { Eye } from "lucide-react";
 
-export async function ViewSingleBook({ singleBookId }) {
+type SingleBookIdProps = {
+  singleBookId: string;
+};
+
+export async function ViewSingleBook({ singleBookId }: SingleBookIdProps) {
   const book = await getSingleBook(singleBookId);
 
   return (

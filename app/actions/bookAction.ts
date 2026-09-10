@@ -14,11 +14,11 @@ export async function createBook(formData: FormData) {
   const image = formData.get("image");
 
   // validations
-  if (!title || !subtitle || !mrp || !dis || !prc || !image) {
-    return {
-      message: "All field is requird",
-    };
-  }
+  // if (!title || !subtitle || !mrp || !dis || !prc || !image) {
+  //   return {
+  //     message: "All field is requird",
+  //   };
+  // }
 
   //send data to API
   const response = await fetch(API, {
@@ -53,7 +53,7 @@ export async function deleteBook(formData: FormData) {
 }
 
 //Get Single Book
-export async function getSingleBook(id) {
+export async function getSingleBook(id: string) {
   const res = await fetch(`${API}/${id}`, {
     // cache: "no-cache"
   });

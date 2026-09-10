@@ -1,11 +1,10 @@
 import "./globals.css";
-import Footer from "./components/Footer/page";
-import Header from "./components/Header/page";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
 import { Geist } from "next/font/google";
 import { cn } from "@/lib/utils";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
-
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (

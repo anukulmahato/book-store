@@ -8,10 +8,20 @@ import {
   Trash,
 } from "lucide-react";
 import React from "react";
-import { CreateBookForm } from "../components/CreateBookForm/page";
+import { CreateBookForm } from "../components/CreateBookForm/CreateBookForm";
 import { deleteBook, getAllBook } from "../actions/bookAction";
-import { UpdateBookForm } from "../components/UpdateBookForm/page";
-import { ViewSingleBook } from "../components/ViewSingleBook/page";
+import { UpdateBookForm } from "../components/UpdateBookForm/UpdateBookForm";
+import { ViewSingleBook } from "../components/ViewSingleBook/ViewSingleBook";
+
+type Book = {
+  id: string;
+  title: string;
+  subtitle: string;
+  image: string;
+  mrp: number;
+  dis: number;
+  prc: number;
+};
 
 async function page() {
   const books = await getAllBook();
@@ -172,7 +182,7 @@ async function page() {
                 <tbody className="divide-y divide-gray-100">
                   {/* PRODUCT 1 */}
 
-                  {books.reverse().map((item) => {
+                  {books.reverse().map((item: Book) => {
                     return (
                       <tr key={item.id} className="transition hover:bg-gray-50">
                         {/* Book */}
