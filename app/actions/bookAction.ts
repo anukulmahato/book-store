@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 
-const API = "https://book-store-1-mhhy.onrender.com/books!";
+const API = "http://localhost:5050/books";
 
 //Create Book
 export async function createBook(formData: FormData) {
