@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 
-const API = process.env.API_URL!;
+const API = "https://book-store-1-mhhy.onrender.com!";
 
 //Create Book
 export async function createBook(formData: FormData) {
