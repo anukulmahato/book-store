@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "eslint",
     "api": "json-server --watch api/data.json --port 5050",
-    "api:prod": "node server.js"
+    "api:prod": "json-server api/data.json --port 5050"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",
