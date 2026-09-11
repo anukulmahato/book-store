@@ -91,7 +91,7 @@ async function page() {
                   </div>
                   {/* Button */}
                   <Link
-                    href={`${process.env.API_URL}${item.id}`}
+                    href={`${process.env.NEXT_PUBLIC_SITE_URL}/books/${item.id}`}
                     className="mt-4 flex items-center justify-center
              w-full h-9 sm:h-10
              rounded-lg
