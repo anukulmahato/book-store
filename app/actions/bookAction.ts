@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 
-const API = "http://localhost:5050/books";
+const API = process.env.API_URL!;
 
 //Create Book
 export async function createBook(formData: FormData) {
