@@ -32,7 +32,9 @@ export async function createBook(formData: FormData) {
 //Get All Users
 export async function getAllBook() {
   //fetch users
-  const response = await fetch(API);
+  const response = await fetch(API, {
+    cache: "no-store",
+  });
   const books = await response.json();
 
   return books;
@@ -55,7 +57,7 @@ export async function deleteBook(formData: FormData) {
 //Get Single Book
 export async function getSingleBook(id: string) {
   const res = await fetch(`${API}/${id}`, {
-    // cache: "no-cache"
+    cache: "no-cache",
   });
 
   return res.json();
